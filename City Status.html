@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sELECT A cITY</title>
+    <style>
+        body
+        {
+            background-color: rgb(13, 59, 199);
+        }
+        #cont
+        {
+            background-color: black;
+            margin:150px auto;
+            padding-bottom: 5px;
+            text-align: center;
+            border-radius: 10px;
+            width:400px;
+            padding-bottom:20px;
+        
+            
+        }
+        h1{
+            padding-top: 50px;
+            color:white;
+            text-align: center;
+        }
+        #input
+        {
+            margin-bottom: 10px;
+            width:70%;
+            margin-left: 6px;
+        }
+        button
+        {
+            background-color: rgb(255, 0, 0);
+            color:rgb(144, 255, 192);
+            width: 150px;
+            padding:3px 3px;
+            margin-bottom: 30px
+
+        }
+        #output
+        {
+            margin-top: 10px;
+            font-size: 30px;
+            text-align: center;
+            padding:0 12px;
+            color:aliceblue;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="cont">
+       
+        <h1>Select a city</h1>
+
+        <div id="inputdiv">
+            <select id="input">
+                <option value="Banglore">Banglore</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Mumbai">Mumbai</option>
+            </select>
+        </div>
+
+        <div>
+            <button type="submit"><b>Show Stats</b></button>
+        </div>
+
+    </div>
+
+<script>
+
+    const button = document.querySelector('button')
+    button.addEventListener('click',call)
+
+    function call()
+    {
+        const input = document.getElementById('input')
+        const city = input.options[input.selectedIndex].value
+
+        let population = 0 , literacyRate = 0 , language = ''
+
+        switch(city)
+        {
+            case 'Banglore':
+                population   = 983923022
+                literacyRate = 95.87
+                language     = 'Kannada'
+                break
+            case 'Chennai':
+                population   = 984958733
+                literacyRate = 91.69
+                language     = 'Tamil'
+                break
+            case 'Delhi':
+                population   = 109323233
+                literacyRate = 94.90
+                language     = 'Hindi'
+                break
+
+            case 'Mumbai':
+                population   = 998982123
+                literacyRate = 97.55
+                language     = 'Marathi'
+                break
+
+        }
+    let text = `The Indian city ${city} has a population of ${population}
+                ,Literacy rate of ${literacyRate}% and the language followed
+                by the people is ${language}`
+    let resultdiv=document.createElement('div')
+    resultdiv.id = 'output'
+    document.getElementById('cont').appendChild(resultdiv)
+    document.getElementById('output').innerHTML = text
+    }
+
+</script>
+</body>
+</html>
